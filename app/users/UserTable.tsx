@@ -13,7 +13,8 @@ interface Props {
 }
 
 const UserTable = async ({ sortOrder }: Props) => {
-	const res = await fetch("https://jsonplaceholder.typicode.com/users");
+	// const res = await fetch("https://jsonplaceholder.typicode.com/users");
+	const res = await fetch("http://localhost:3000/api/users/");
 	const users: User[] = await res.json();
 
 	const sortedUsers = sort(users).asc(
@@ -37,7 +38,8 @@ const UserTable = async ({ sortOrder }: Props) => {
 								</td>
 							</tr>
 						</thead>
-						{sortedUsers.map((user) => (
+						{users.map((user) => (
+						// {sortedUsers.map((user) => (
 							<>
 								<tbody>
 									<tr>
