@@ -16,21 +16,26 @@ const NavBar = () => {
 				</Link>
 				<Link href={"/users"}>User</Link>
 			</div>
-			<div >
+			<div className="space-x-4">
 				{status === "loading" && (
 					<button className="btn">
 						<span className="loading loading-spinner"></span>
 						loading
 					</button>
 				)}
-				{status === "authenticated" && (
+				{status === "authenticated" && (<>
 					<div className="btn btn-info">{session.user!.name}</div>
+					<Link className="btn btn-error " href={"/api/auth/signout"}>
+						SIGN OUT
+					</Link>
+        </>
 				)}
 				{status === "unauthenticated" && (
 					<Link className="btn btn-primary " href={"/api/auth/signin"}>
 						LOGIN
 					</Link>
 				)}
+
 			</div>
 		</div>
 	);
